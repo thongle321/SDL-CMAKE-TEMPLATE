@@ -1,12 +1,11 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.26)
 
 project(sdl-cmake)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set (CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_STANDARD 23)
 # SETUP VARIABLES:
 
 # list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/build/modules)
-set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_PATH ${PROJECT_SOURCE_DIR}/include)
 set(OUTPUT_DIR "${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
@@ -24,20 +23,20 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
                                 #   ...and libs is probably not compatible with all compilers.
 
 # NOTE: Folders here contain both SDL2 and SDL2_image files.
-set(SDL2_LIB_DIR D:/mingw64/x86_64-w64-mingw32/lib/sdl_lib)
-set(SDL2_INCLUDE_DIR D:/mingw64/x86_64-w64-mingw32/include)
-set(SDL2_LIBRARY D:/mingw64/x86_64-w64-mingw32/bin)
+set(SDL3_LIB_DIR D:/mingw64/x86_64-w64-mingw32/lib/sdl_lib)
+set(SDL3_INCLUDE_DIR D:/mingw64/x86_64-w64-mingw32/include)
+set(SDL3_LIBRARY D:/mingw64/x86_64-w64-mingw32/bin)
 
 # SETUP INCLUDE AND LINK DIRS:
 
 
 include_directories(
-    ${SDL2_INCLUDE_DIR}
+    ${SDL3_INCLUDE_DIR}
     ${PROJECT_SOURCE_DIR}/include
 )
 
 link_directories(
-    ${SDL2_LIB_DIR}
+    ${SDL3_LIB_DIR}
 )
 
 
@@ -61,9 +60,8 @@ add_executable(${PROJECT_NAME} ${SRC})
 target_link_libraries(
     ${PROJECT_NAME}
         mingw32
-        SDL2main
-        SDL2
-        #SDL2_image
+        SDL3
+	SDL3_image
 )
 
 
@@ -76,7 +74,7 @@ target_link_libraries(
 #)
 
 message(STATUS "Copying all dependencies to destination folder...")
-file(GLOB PROJECT_DEPENDENCIES ${SDL2_LIBRARY}/*.dll)
+file(GLOB PROJECT_DEPENDENCIES ${SDL3_LIBRARY}/*.dll)
 
 foreach(Dependency IN LISTS PROJECT_DEPENDENCIES)
     file(

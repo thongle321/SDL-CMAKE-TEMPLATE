@@ -1,0 +1,3 @@
+D:/sdl-cmake/build/CMakeFiles/sdl-cmake.dir
+D:/sdl-cmake/build/CMakeFiles/edit_cache.dir
+D:/sdl-cmake/build/CMakeFiles/rebuild_cache.dir

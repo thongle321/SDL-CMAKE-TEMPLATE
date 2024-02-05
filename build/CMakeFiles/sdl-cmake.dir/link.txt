@@ -1,3 +1,0 @@
-D:\mingw64\bin\cmake.exe -E rm -f CMakeFiles\sdl-cmake.dir/objects.a
-D:\mingw64\bin\ar.exe qc CMakeFiles\sdl-cmake.dir/objects.a @CMakeFiles\sdl-cmake.dir\objects1.rsp
-D:\mingw64\bin\c++.exe -Wl,--whole-archive CMakeFiles\sdl-cmake.dir/objects.a -Wl,--no-whole-archive -o D:\sdl-cmake\bin\sdl-cmake.exe -Wl,--out-implib,D:\sdl-cmake\bin\libsdl-cmake.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\sdl-cmake.dir\linkLibs.rsp

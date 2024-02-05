@@ -1,1 +1,0 @@
-  -L"D:/mingw64/x86_64-w64-mingw32/lib/sdl_lib"  -lmingw32 -lSDL3 -lSDL3_image -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

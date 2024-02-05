@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.21)
 
 project(sdl-cmake)
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set (CMAKE_CXX_STANDARD 17)
 # SETUP VARIABLES:
 
 # list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/build/modules)
@@ -41,6 +42,8 @@ link_directories(
 
 
 # INCLUDE FILES THAT SHOULD BE COMPILED:
+include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 file(GLOB_RECURSE SRC "src/*.cpp" "src/*.h")
 

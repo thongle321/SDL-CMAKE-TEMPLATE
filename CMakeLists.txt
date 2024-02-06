@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(sdl-cmake)
+project(game)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set (CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 23)
 # SETUP VARIABLES:
 
 # list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/build/modules)
-set(CMAKE_INCLUDE_PATH ${PROJECT_SOURCE_DIR}/include)
+set(CMAKE_INCLUDE_PATH ${PROJECT_SOURCE_DIR}/inc)
+set(CMAKE_INCLUDE_PATH ${PROJECT_SOURCE_DIR}/res)
 set(OUTPUT_DIR "${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
@@ -41,7 +42,7 @@ link_directories(
 
 
 # INCLUDE FILES THAT SHOULD BE COMPILED:
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/inc)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
 file(GLOB_RECURSE SRC "src/*.cpp" "src/*.h")
@@ -58,20 +59,21 @@ add_executable(${PROJECT_NAME} ${SRC})
 # LINK PROGRAM
 
 target_link_libraries(
-    ${PROJECT_NAME}
-        mingw32
+    	${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/inc 
+    	mingw32
         SDL3
 	SDL3_image
+	SDL3_ttf
 )
 
 
 # COPY OVER STATIC FILES
 
-#message(STATUS "Copying all assets to destination folder...")
-#file(
-#    COPY assets
-#    DESTINATION ${OUTPUT_DIR}
-#)
+message(STATUS "Copying all assets to destination folder...")
+file(
+    COPY assets
+    DESTINATION ${OUTPUT_DIR}
+)
 
 message(STATUS "Copying all dependencies to destination folder...")
 file(GLOB PROJECT_DEPENDENCIES ${SDL3_LIBRARY}/*.dll)
